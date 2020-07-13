@@ -435,19 +435,25 @@ We create a contacts array to hold the contacts. Next, we inject ContactService 
 Next open the src/app/contact-list/contact-list.component.html file and add:
 
 ```
-<table style="width:100%">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Actions</th>
-  </tr>
-  <tr *ngFor="let contact of contacts" >
-    <td>{{ contact.name }}</td>
-    <td>{{ contact.email }}</td> 
-    <td>
-    <a [routerLink]="['/contact', contact.id]">Go to details</a>
-    </td>
-  </tr>
+<table class="table table-dark table-hover">
+  <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contacts">
+        <th scope="row">{{ contact.id }}</th>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.email }}</td>
+        <td> 
+            <a [routerLink]="['/contact', contact.id]" class="btn btn-info">Go to details</a>
+        </td>
+    </tr>
+  </tbody>
 </table>
 ```
 
